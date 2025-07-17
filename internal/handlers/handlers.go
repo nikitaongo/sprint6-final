@@ -12,12 +12,12 @@ import (
 
 func HtmlHandler(w http.ResponseWriter, r *http.Request) {
 	// для корневого эндпоинта / нужно реализовать хендлер, который возвращает HTML из файла index.html.
-	data, err := os.ReadFile("../index.html")
+	data, err := os.ReadFile("index.html")
 	if err != nil {
 		http.Error(w, "internal server error", http.StatusInternalServerError)
 		return
 	}
-	w.Header().Set("Content-Type", "text/html")
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	w.Write(data)
 }
